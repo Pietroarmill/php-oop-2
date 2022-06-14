@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . "/Prodotto.php";
 
-class Cibo extends Prodotto {
+class Gioco extends Prodotto {
 
 }
-?>
