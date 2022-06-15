@@ -2,13 +2,22 @@
 require_once __DIR__ . "/Prodotto.php";
 require_once __DIR__ . "/Cibo.php";
 require_once __DIR__ . "/Utente.php";
+require_once __DIR__ . "/CreditCard.php";
+require_once __DIR__ . "/Cuccia.php";
+
 
 $monge = new Cibo("Monge", "50", "cane", "20");
 $selex = new Cibo("Selex", "30", "gatto", "15");
+$dogHome = new Cuccia("DogHome", 100, "cane", "medio");
 
-$pietro = new Utente("Pietro", "pietro@gmail.com");
+$pietro = new Utente();
 $pietro->addProductToCart($monge);
+$pietro->addProductToCart($selex);
+$pietro->addProductToCart($dogHome);
 
+$pietro->register("Pietro", "pietro@gmail.com");
+// $pietro_credit_card = new CreditCard(80708868606, "04/24", 393);
+$pietro->setMetodoPagamento(new CreditCard(2340294209482, "02/25", 345));
 var_dump($pietro);
 
 ?>
@@ -26,6 +35,10 @@ var_dump($pietro);
 <?php echo $monge->printInfo(); ?>
 <br>
 <?php echo $selex->printInfo(); ?>
+<br>
+<p>Totale carello: €<?php echo $pietro->getTot(); ?> </p>
+
+<p> <?php echo $pietro->pay(); ?> </p>
 
 
 </body>
